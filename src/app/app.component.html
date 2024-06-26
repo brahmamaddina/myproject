@@ -1,14 +1,63 @@
-<!DOCTYPE html>
-<html>
-<body>
-  <h4>Brahma</h4>
-    <p>M b </p>
-    <form action="/action_page.php">
-      <label for="fname">User id:</label><br>
-      <input [(ngModel)]="userName" type="text" id="fname" name="fname"><br>
-      <label for="lname">Password:</label><br>
-      <input [(ngModel)]="password" type="password" id="lname" name="lname"><br><br>
-      <input type="submit" (click)="login()">      
-    </form>
-  </body>
-</html> 
+<form [formGroup]="formdata" (ngSubmit) = "mySubmit(formdata.value)">
+  <div class="row-direction">
+    <section class="row-direction">
+      <label for="name">Person name :</label><br />
+      <input type="name" formControlName="name" id="name"  /><br />
+    </section>
+    <section class="row-direction">
+      <label for="number">Phone number :</label><br />
+      <input type="number" id="number" formControlName="number" value="7386314086" /><br />
+    </section>
+    <section class="row-direction">
+      <label name="city">City :</label>
+      <select name="city" id="city"  formControlName="city" value="city">
+        <option value="kadapa">kadapa</option>
+        <option value="nellore">nellore</option>
+        <option value="tirupati">tirupati</option>
+        <option value="kodur">kodur</option>
+      </select>
+    </section>
+  </div>
+  <div>
+
+    <div class="row-direction">
+      <section class="row-direction">
+        <h4>Address:</h4>
+        <textarea>
+        </textarea>
+      </section>
+      <h4>gender</h4>
+      <div>
+        <input type="radio" id="male" name="gender" value="male" formControlName="gender">
+        <label for="male">male</label><br>
+        <input type="radio" id="female" name="gender" value="female" formControlName="gender">
+        <label for="female">female</label><br>
+        <input type="radio" id="other" name="gender" value="other" formControlName="gender">
+        <label for="other">other</label><br>
+      
+        
+      </div>
+    </div>
+  </div><br />
+  <div>
+    <input type="checkbox" formControlName="checkbox" id="checkbox">
+    <label for="checkbox"><a href="https://www.google.co.in/" target="_blank">I accept terms and
+        conditions</a></label><br/>
+
+  </div><br/>
+
+  <br/>
+  <div>
+    <input type="submit" id="any">
+  </div>
+<div *ngIf="isSubmitted">
+
+  <p > Name: {{ formdata.value.name }}</p>
+  <p > number: {{ formdata.value.number }}</p>
+  <p > address: {{ formdata.value.address}}</p>
+  <p > City: {{ formdata.value.city }}</p>
+  <p > Gender: {{ formdata.value.gender }}</p>
+
+</div>
+
+</form>
